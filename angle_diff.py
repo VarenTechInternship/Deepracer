@@ -30,7 +30,7 @@ def reward_function(params):
         diff1 = 360 - diff1
 
     # Calculate reinforcement reward/punishment
-    reinf = (180 - diff1) / 90  # Range of 0 to 2
+    reinf = (180 - diff1) / 150  # Range of 0 to 2
     reward *= reinf
 
     return reward
