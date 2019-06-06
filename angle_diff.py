@@ -12,9 +12,6 @@ def reward_function(params):
     closest_waypoints = params['closest_waypoints']
     head = params['heading']
 
-    # Initialize the reward with typical value
-    reward = 1.0
-
     # Calculate the direction of the center line based on the closest waypoints
     w1 = waypoints[closest_waypoints[0]]
     w2 = waypoints[closest_waypoints[1]]
@@ -30,7 +27,5 @@ def reward_function(params):
         diff1 = 360 - diff1
 
     # Calculate reinforcement reward/punishment
-    reinf = (180 - diff1) / 150  # Range of 0 to 2
-    reward *= reinf
-
-    return reward
+    reward1 = (180-diff)/150
+    return reward1
