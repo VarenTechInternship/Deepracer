@@ -1,14 +1,20 @@
+
 def reward_function(params):
 
-    
     # initialization
-    import math
-    
     waypoints = params['waypoints']
     closest_waypoints = params['closest_waypoints']
     speed = params['speed']
-    reward = 1.0
 
+    reward1 = 1e-3
+    reward1 = 1e-3
+    reward1 = 1e-3
+
+
+
+    # Multi_feature_reinforcement
+
+    # TURNING SPEED 
     if closest_waypoints[1] + 1 < len(waypoints):
     
         # fetches the 3 closest waypoints
@@ -42,5 +48,8 @@ def reward_function(params):
         else: ratio1 = 1
     
         reward = float((ratio1)*(rewardAmnt))
+
+    # STAY LEFT
     
-    return reward
+
+
