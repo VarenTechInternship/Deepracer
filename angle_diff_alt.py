@@ -17,7 +17,7 @@ def reward_function(params):
     # Calculate the direction of the center line based on the closest waypoint
     # and the waypoint 3 after that
     w1 = waypoints[closest_waypoints[0]]
-    w2 = waypoints[(closest_waypoints[0] + 3) % len(waypoints)]
+    w2 = waypoints[(closest_waypoints[0] + 2) % len(waypoints)]
 
     # Calculate the direction in radius, arctan2(dy, dx), the result is (-pi, pi) in radians
     dir1 = math.atan2(w2[1] - w1[1], w2[0] - w1[0]) 
@@ -30,6 +30,6 @@ def reward_function(params):
         diff1 = 360 - diff1
     
     # Calculate reinforcement reward/punishment
-    reward = (180 - diff1) / 90  # Range of 0 to 2
+    reward = (90 - diff1) / 90  # Range of -1 to 1
     
     return reward
