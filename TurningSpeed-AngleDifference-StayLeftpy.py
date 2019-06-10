@@ -49,7 +49,7 @@ def reward_function(params):
         ratio1 = speedPercent / turnPercent
     else: ratio1 = 1
 
-    reward1 = float((ratio1)*(rewardAmnt)) 
+    reward1 = float((ratio1)*(rewardAmnt)) -1 #takes [0,2] reward and makes it [-1,1]
 
 
     # STAY LEFT
@@ -60,22 +60,16 @@ def reward_function(params):
     #punish wheels off the track; reward is left of center
 
     position = ((track_width/2.0) - distance_from_center) / (track_width/2.0)
-
+ 
+    #updated position -> reward function. Does not use arbitrary numbers
     if is_left_of_center:
-        if position >= 0.5 and position <=1.0:
-            reward2 = position
-        elif position < 0.5 and position >= 0.10:
-            reward2 = 0.5 * position
+        if position >= 0.5:
+            reward2 = position ** 2
         else:
-            reward2 = -1
+            reward2 = -1 * (position ** 2)
     else:
-        if position >= 0.5 and position <=1.0:
-            reward2 = -0.2 * position
-        elif position < 0.5 and position >= 0.15:
-            reward2 = -0.5 * position
-        else: 
-            reward2 = -1
-
+        reward2 = -1 * (position ** 2)
+     
     # ANGLE DIFFERENCE --------------------------------------------------------------------------
 
     '''
