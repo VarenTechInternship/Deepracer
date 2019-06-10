@@ -62,14 +62,12 @@ def reward_function(params):
     position = ((track_width/2.0) - distance_from_center) / (track_width/2.0)
  
     #updated position -> reward function. Does not use arbitrary numbers
-    if is_left_of_center:
-        if position >= 0.5:
-            reward2 = position ** 2
-        else:
-            reward2 = -1 * (position ** 2)
+    #remove is left
+    if position >= 0.5:
+        reward2 = position ** 2
     else:
         reward2 = -1 * (position ** 2)
-     
+    
     # ANGLE DIFFERENCE --------------------------------------------------------------------------
 
     '''
